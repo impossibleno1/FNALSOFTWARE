@@ -1,0 +1,157 @@
+﻿@model DIENMAYQUYETTIEN2.Models.Contact
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Main/Views/Shared/_Admin_Layout.cshtml";
+}
+
+        <div class="main">
+            <div class="content">
+                <div class="support">
+                    <div class="section group">
+                        <div class="col span_2_of_3" style="display: flex;">
+                            <div class="contact-form col-12">
+                                <h2 style="text-align: center ">Contact Quyết Tiến Store</h2>
+                                @using (Html.BeginForm("Create", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                <div class="form-horizontal" style="padding: 0px">
+                                    @Html.ValidationSummary(true)
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.TEN, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.TEN, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.TEN)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EMAIL, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.EMAIL)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PHONE, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.PHONE, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.PHONE)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.MESSAGES, new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.MESSAGES, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.MESSAGES)
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <span><input type="submit" value="Create"></span>
+                                    </div>
+                                </div>
+                                 }
+                            </div>
+                        <div class="col span_1_of_3">
+                            <div class="contact_info">
+                                <h2 style="color : red">Địa chỉ </h2>
+                                <div class="map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1722107977635!2d106.70892531477153!3d10.798118992306767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528b01862b1c9%3A0x2c7094d4f546f290!2zMjAwIFjDtCBWaeG6v3QgTmdo4buHIFTEqW5oLCBQaMaw4budbmcgMjEsIELDrG5oIFRo4bqhbmgsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1543403047723" width="315" height="350" frameborder="0" style="border:0" allowfullscreen></iframe><br>
+                                </div>
+                            </div>
+                            <div class="company_address">
+                                <h2 style=" color: red">Thông tin của chúng tôi </h2>
+                                <p><i class="fa fa-home">200 Xô Viết Nghệ Tĩnh </i></p>
+                                <p><i class="fa fa-home">Quận Bình Thạnh , Thành phố Hồ Chí Minh</i></p>
+                                <p><i class="fa fa-phone">Phone:(00) 222 666 444</i></p>
+                                <p><i class="fa fa-fax">Fax: (000) 000 00 00 0></i></p>
+                                <p>Email: <span><a href="quyettien@gmail.com">quyettien@gmail.com</a></span></p>
+                                <p>Follow on: <span><a href="#">Facebook</a></span>, <span><a href="#">Twitter</a></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="wrapper">
+                <div class="section group">
+                    <div class="col_1_of_4 span_1_of_4">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Customer Service</a></li>
+                            <li><a href="#"><span>Advanced Search</span></a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#"><span>Contact Us</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col_1_of_4 span_1_of_4">
+                        <h4>Why buy from us</h4>
+                        <ul>
+                            <li><a href="about.php">About Us</a></li>
+                            <li><a href="faq.php">Customer Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="contact.php"><span>Site Map</span></a></li>
+                            <li><a href="preview-2.php"><span>Search Terms</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col_1_of_4 span_1_of_4">
+                        <h4>My account</h4>
+                        <ul>
+                            <li><a href="contact.php">Sign In</a></li>
+                            <li><a href="index.php">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="faq.php">Help</a></li>
+                        </ul>
+                    </div>
+                    <div class="col_1_of_4 span_1_of_4">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><span>+91-123-456789</span></li>
+                            <li><span>+00-123-000000</span></li>
+                        </ul>
+                        <div class="social-icons">
+                            <h4>Follow Us</h4>
+                            <ul>
+                                <li class="facebook"><a href="#" target="_blank"> </a></li>
+                                <li class="twitter"><a href="#" target="_blank"> </a></li>
+                                <li class="googleplus"><a href="#" target="_blank"> </a></li>
+                                <li class="contact"><a href="#" target="_blank"> </a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copy_right">
+                    <p>&copy; 2013 Smart Store. All Rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a> </p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /*
+                var defaults = {
+                          containerID: 'toTop', // fading element id
+                      containerHoverID: 'toTopHover', // fading element hover id
+                      scrollSpeed: 1200,
+                      easingType: 'linear'
+                      };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+        </script>
+        <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    </div>
+</body>
+
+
+
+    }

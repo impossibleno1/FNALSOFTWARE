@@ -1,0 +1,100 @@
+﻿@model DIENMAYQUYETTIEN2.Models.CashBill
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+<div style="height: 20px;"></div>
+<div style="display: flex; justify-content: center; flex-direction: row;">
+    <h2>Delete Cash Bill</h2>
+</div>
+<div style="display: flex; justify-content: center; flex-direction: row;">
+    <h3>Are you sure you want to delete this?</h3>
+</div>
+<div>
+    <div class="dl-horizontal" style="display: flex; justify-content: center; flex-direction: row; margin-top: 30px; font-size: 18px">
+        <div>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillCode):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.BillCode)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CustomerName):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.CustomerName)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Shipper):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.Shipper)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Note):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.Note)
+                </dd>
+            </dl>
+            <dl style="display: flex;">
+                <dt>
+                    @Html.DisplayNameFor(model => model.GrandTotal):
+                </dt>
+                &nbsp;
+                <dd>
+                    @Html.DisplayFor(model => model.GrandTotal)
+                </dd>
+            </dl>
+            <div class="dl-horizontal" style="display: flex; justify-content: center; flex-direction: row; margin-top: 30px;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-primary" />
+                        <a title="Back" href="@Url.Action("Index")" class="btn btn-danger ">Back to list</a>
+                    </div>
+                }
+            </div>
+        </div>
+</div>

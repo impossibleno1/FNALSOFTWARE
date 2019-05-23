@@ -1,0 +1,98 @@
+﻿@model IEnumerable<DIENMAYQUYETTIEN2.Models.Product>
+
+@{
+ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+<h2 style="text-align:center; padding-top: 20px;" class="title"><strong>MANAGE PRODUCT</strong></h2>
+
+
+<p style="display: flex; justify-content: flex-end; padding-right: 35px;">
+    <a href="@Url.Action("Create")" class="btn btn-primary">ADD NEW PRODUCT</a>
+</p>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Product Name</th>
+                        <th>Sale Price</th>
+                        <th>Origin Price</th>
+                        <th>Installment Price</th>
+                        <th>Quantity</th>
+                        <th>Avatar</th>
+                        <th>Status</th>
+                        <th>ProductID</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Product Code</th>
+                        <th>Product Name</th>
+                        <th>Sale Price</th>
+                        <th>Origin Price</th>
+                        <th>Installment Price</th>
+                        <th>Quantity</th>
+                        <th>Avatar</th>
+                        <th>Status</th>
+                        <th>ProductID</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SalePrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OriginPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InstallmentPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                <img src="@Url.Action("Details", new { id = item.ID })" width="150" height="100" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductType.ProductTypeName)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                                <a title="Sửa" href="@Url.Action("Edit", new { id = item.ID})" class="btn btn-primary ">
+                                    <i class="fas fa-edit"></i>
+                                </a> 
+                                @*<a title="Thông tin" href="@Url.Action("Details", new { id = item.ID})" class="btn btn-success glyphicon glyphicon-file"></a> |*@
+                                <a title="Xóa" href="@Url.Action("Delete", new { id = item.ID})" class="btn btn-danger " style="margin-top:20px;">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+        

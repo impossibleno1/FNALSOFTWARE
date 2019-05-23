@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DIENMAYQUYETTIEN2.Models.InstallmentBillDetail>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Thêm sản phẩm", "CreateEditI", new { id = @ViewBag.id })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstallmentPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstallmentBill.BillCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductCode)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstallmentPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstallmentBill.BillCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductCode)
+                </td>
+                <td>
+                    
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@model DIENMAYQUYETTIEN2.Models.CashBillDetail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create2", "CashBillDetails")) 
+{
+    @Html.AntiForgeryToken()
+    <h2 style="padding-left: 230px;font-size: 40px; ">Add Products In CashBill</h2>
+    <div class="form-horizontal" style="padding-top: 0px 5%;">
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductID, "Product", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("ProductID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.SalePrice, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SalePrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                
+            </div>
+        </div>
+    </div>
+}

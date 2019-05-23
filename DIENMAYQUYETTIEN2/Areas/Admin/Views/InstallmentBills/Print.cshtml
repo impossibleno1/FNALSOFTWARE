@@ -1,0 +1,113 @@
+﻿@model DIENMAYQUYETTIEN2.Areas.Admin.Models.ReceiptModel2
+
+@{
+    Layout = null;
+    int i = 1;
+    int tong = 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Example 2</title>
+    <link href="~/Content/styleprint.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="clearfix">
+        <div id="logo">
+            <img src="~/Content/Logo_QT_PNG.png">
+        </div>
+        <div id="company">
+            <h2 class="name">Điện máy quyết tiến</h2>
+            <div>45 Nguyen Khac Nhu, q1, hcm</div>
+            <div>(602) 519-0450</div>
+            <div><a href="mailto:company@example.com">company@example.com</a></div>
+        </div>
+    </header>
+    <main>
+        <div id="details" class="clearfix">
+            <div id="client">
+                <div class="to">Hoa don</div>
+                <h2 class="name">@Model.CustomerID</h2>
+                <div class="phone">@Model.CustomerP</div>
+            </div>
+            <div id="invoice">
+                <h1>@Model.BillCode</h1>
+                <div class="date">@Model.Date</div>
+
+            </div>
+        </div>
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="no">#</th>
+                    <th class="desc">Tên sản phẩm</th>
+                    <th class="unit">Giá trả góp</th>
+                    <th class="qty">Số lượng</th>
+                    <th class="total">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.InstallmentBillDetails)
+                {
+                    <tr>
+                        <td class="no">@i</td>
+                        <td class="desc"><h3>@Html.DisplayFor(modelItem => item.Product.ProductName)</h3></td>
+                        <td class="unit">@string.Format("{0:0,0} VND", Html.DisplayFor(modelItem => item.InstallmentPrice))</td>
+                        <td class="qty">@Html.DisplayFor(modelItem => item.Quantity)</td>
+                        <td class="total">@string.Format("{0:0,0} VND", (item.InstallmentPrice * item.Quantity))</td>
+
+                    </tr>
+                    tong = tong + @item.Quantity;
+                    i = i + 1;
+                }
+
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">Tổng số lượng</td>
+                    <td>@string.Format("{0:0,0} Cái", @tong)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">Tổng tiền</td>
+                    <td>@string.Format("{0:0,0} VND", Model.GrandTotal)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">Số tiền đã nhận</td>
+                    <td>@string.Format("{0:0,0} VND", Model.Taken)</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">Còn lại</td>
+                    <td>@string.Format("{0:0,0} VND", Model.Remain)</td>
+                </tr>
+                
+            </tfoot>
+        </table>
+        <div id="thanks">Thank you!</div>
+        <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <a title="Back" href="@Url.Action("Index")" class="btn btn-danger " style="font-size:30px;">Back to list</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        Invoice was created on a computer and is valid without the signature and seal.
+
+    </footer>
+</body>
+</html>
+
+
+
+

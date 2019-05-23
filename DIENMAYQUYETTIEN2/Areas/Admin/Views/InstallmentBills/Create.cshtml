@@ -1,0 +1,121 @@
+﻿@model DIENMAYQUYETTIEN2.Models.InstallmentBill
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+    <div style="height: 20px;"></div>
+    <div class="form-horizontal" style="padding: 0px 20%;">
+        <h4 style="text-align:center;font-size: 40px;">Add New InstallmentBill</h4>
+            <hr />
+        @Html.ValidationSummary(true)
+            
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerID, "Customer Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                @Html.DropDownList("CustomerID", String.Empty)
+                    @Html.ValidationMessageFor(model => model.CustomerID)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Shipper, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Shipper, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Shipper)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Note)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Method, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Method, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Method)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Period, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Period, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Period)
+                </div>
+            </div>
+    
+            
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Taken, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Taken, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Taken)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Remain, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Remain, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Remain)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a title="Back" href="@Url.Action("Index")" class="btn btn-danger ">Back to list</a>
+                </div>
+            </div>
+        </div>
+    }
+@if (Session["InsCashBill"] != null)
+{
+    
+    @Html.Action("Create", "InstallmentBillDetails")
+    @Html.Action("Index", "InstallmentBillDetails")
+
+    <br /><br />
+    using (Html.BeginForm("Create2", "InstallmentBills"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="margin-left: 250px">
+                <input type="submit" value="Lập hóa đơn" class="btn btn-primary" />
+            </div>
+    </div>
+    }
+}
+@section Scripts {
+    <script>
+    $('#ProductID').change(function () {
+            var url = '@Url.Action("InstallmentPrice", "InstallmentBillDetails")';
+        url = url + '?ProductID=' + $(this).val();
+        $.get(url, function (data) {
+            $('#InstallmentPrice').val(data);
+        });
+    })
+
+    </script>
+}
+    
+    

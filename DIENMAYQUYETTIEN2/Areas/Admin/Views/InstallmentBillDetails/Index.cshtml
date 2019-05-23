@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DIENMAYQUYETTIEN2.Models.InstallmentBillDetail>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<h2 style="text-align:center;font-size: 40px;">List Products</h2>
+    <table class="table" style="width: 70%; margin-left: 250px" >
+        <thead>
+            <tr>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Installment Price
+                </th>
+                <th>
+                    Total
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstallmentPrice)
+                </td>
+                <td>
+                    @(item.Quantity * item.InstallmentPrice)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <div>
+        <div class="form-group">
+            <label class="control-label col-md-2" style="margin-left: 250px">Grand Total</label>
+            <div class="col-md-10">
+                <input id="GrandTotal2" class="disabled" style="margin-left: 250px" value="@Model.Sum(m => m.InstallmentPrice * m.Quantity)" disabled /> VNĐ
+            </div>
+        </div>
+    </div>

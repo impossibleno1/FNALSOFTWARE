@@ -1,0 +1,110 @@
+﻿@model DIENMAYQUYETTIEN2.Models.CashBill
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div style="height: 20px;"></div>
+    <div class="form-horizontal"  style="padding: 0px 20%;">
+        <h2 style="padding-left: 250px;font-size: 40px; ">Add New CashBill</h2>
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.BillCode, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BillCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CustomerName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Date, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Shipper, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Shipper, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Shipper)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Note, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Note)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" style="margin-left:100px;" >
+                <a title="Back" href="@Url.Action("Index")" class="btn btn-danger " style="margin-left:200px;">Back to list</a>
+            </div>
+        </div>
+    </div>
+}
+    
+    @if (Session["CashBill"] != null)
+    {
+
+        @Html.Action("Create", "CashBillDetails")
+
+        @Html.Action("Index", "CashBillDetails")
+
+
+        using (Html.BeginForm("Create2", "CashBills"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-bottom:50px">
+                    <input type="submit" value="Lập hóa đơn" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    }
+    @section Scripts {
+        <script>
+            $('#ProductID').change(function () {
+                var url = '@Url.Action("SalePrice", "CashBillDetails")';
+                url = url + '?ProductID=' + $(this).val();
+                $.get(url, function (data) {
+                    $('#SalePrice').val(data);
+                });
+            })
+
+        </script>
+    }
+

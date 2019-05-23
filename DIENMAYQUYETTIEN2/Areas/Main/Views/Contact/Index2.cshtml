@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DIENMAYQUYETTIEN2.Models.Contact>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2 style="padding-top:50px; text-align:center;">List Contact</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MESSAGES)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MESSAGES)
+        </td>
+        
+    </tr>
+}
+
+</table>

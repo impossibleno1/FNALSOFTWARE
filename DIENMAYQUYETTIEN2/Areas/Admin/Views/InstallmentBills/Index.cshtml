@@ -1,0 +1,131 @@
+﻿@model IEnumerable<DIENMAYQUYETTIEN2.Models.InstallmentBill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2 style="text-align:center; padding-top: 20px;" class="title"><strong>MANAGE INSTALLMENTBILL</strong></h2>
+
+
+<p style="display: flex; justify-content: flex-end; padding-right: 35px;">
+    <a href="@Url.Action("Create")" class="btn btn-primary" style="float: right;">ADD NEW INSTALLMENTBILL</a>
+    </p>
+<div class="card mb-3">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Bill Code </th>
+                        <th>Customer Name</th>
+                        <th>Date </th>
+                        <th>Shipper</th>
+                        <th>Note</th>
+                        <th>Method</th>
+                        <th>Period</th>
+                        <th>Grand Total</th>
+                        <th>Taken</th>
+                        <th>Remain </th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Bill Code </th>
+                        <th>Customer Name</th>
+                        <th>Date </th>
+                        <th>Shipper</th>
+                        <th>Note</th>
+                        <th>Method</th>
+                        <th>Period</th>
+                        <th>Grand Total</th>
+                        <th>Taken</th>
+                        <th>Remain </th>
+
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BillCode)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.Shipper)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                                @Html.DisplayNameFor(model => model.GrandTotal)
+            </th>
+            <th></th>
+                        </tr>*@
+    
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillCode)
+            </td>
+            <td>
+                                @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                            </td>
+                            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Method)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remain)
+            </td>
+            <td>
+                                <a title="Sửa" href="@Url.Action("Edit", new { id = item.ID})" class="btn btn-primary ">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                
+                <a title="in" href="@Url.Action("Print", new { id = item.ID})" class="btn btn-group "style="margin-top:20px;" >
+                    <i class="fas fa-print"></i>
+                </a>
+            </td>
+        </tr>
+
+    }
+    
+
+        </div>
+

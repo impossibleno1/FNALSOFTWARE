@@ -1,0 +1,86 @@
+﻿@model DIENMAYQUYETTIEN2.Models.CashBillDetail
+@{
+    ViewBag.Title = "CreateEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CashBillDetail</h4>
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BillID, "BillID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.BillID)
+                @Html.ValidationMessageFor(model => model.BillID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductID, "ProductName", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProductID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity)
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalePrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalePrice)
+                @Html.ValidationMessageFor(model => model.SalePrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a title="Back" href="javascript:history.back()" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    
+</div>
+
+@section Scripts {
+    <script>
+    $('#ProductID').change(function () {
+            var url = '@Url.Action("SalePrice", "CashBillDetails")';
+        url = url + '?ProductID=' + $(this).val();
+        $.get(url, function (data) {
+                $('#SalePrice').val(data);
+        });
+    })
+
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
